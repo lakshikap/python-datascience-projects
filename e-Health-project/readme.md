@@ -4,5 +4,5 @@
 3. The document is the report prepared as a group for the project. 
 4. The other coding files created by other students are not given in this repository.
 
-# Technical Analysis
+# Technical Analysis: Hospital Appointment System
 1. The technical analysis presentation is a critical analysis of a research paper which discusses an appointment system to reduce wait times in Canada.
