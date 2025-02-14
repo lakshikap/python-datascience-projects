@@ -1,0 +1,80 @@
+Group: 09
+Assignment 1
+Team: Sheryl, Lenish, Lakshika
+Date: January 30, 2025
+
+---------------------------------ABOUT---------------------------------
+
+Welcome! In this program, we analyse research paper abstracts from PubMed medical literature database five mental health disorder categories, namely clinical depression, bipolar disorder, anxiety disorder, post-traumatic stress disorder and schizophrenia. 
+
+As it is a text classification exercise, we preprocess and cleanse the abstracts, then convert the text into TF-IDF features format to be able to use in models. We implement the models using Support Vector Machine (SVM), RandomForest, Multinomial Naïve Bayes, XGBoost, k-Nearest Neighbour (k-NN) and Stochastic Gradient Descent (SGD) models. Thereafter, we evaluate the models using accuracy score, classification report, confusion matrix and perform error analysis. In some instances, we use two datasets to compare outputs and select the best performing models and generate insights.
+
+Moreover, we implement BERT as a classification model, and evaluate the model using accuracy score, classification report, confusion matrix and evaluate and analyze errors. 
+
+Furthermore, we perform visualizations, bias and variablity and other actions on the dataset. Refer to the report for more details.
+
+Following files are part of the program:
+- readme
+- G9_Assignment1_abstract_extraction.ipynb (generates the dataset)
+- scraped_pubmed_abstract_100.csv (default dataset)
+- scraped_pubmed_abstract_75.csv (comparison dataset)
+- G9_Assignment1_Text_Classification_endtoend_100.ipynb (runs the main code with 100-words dataset)
+- G9_Assignment1_Text_Classification_endtoend_75.ipynb (runs the main code with 75-words dataset for comparison)
+
+---------------------------------PREREQUISITES---------------------------------
+
+Install the following libraries (pip install...):
+- requests
+- BeautifulSoup
+- ThreadPoolExecutor
+- re
+- random
+- nltk
+- pandas
+- sklearn
+- xgboost
+- seaborn
+- matplotlib
+- numpy
+- transformers
+- torch
+- wordcloud
+- warnings
+
+Download the necessary NLTK resources:
+- nltk.download('punkt')
+- nltk.download('stopwords')
+- nltk.download('wordnet')
+- nltk.download('punkt_tab')
+
+Environment (recommended): 
+- Google Collab (Python 3)
+- Jupyter Notebook
+
+---------------------------------DATASET---------------------------------
+
+We perform a web scraping of the public PubMed database under five mental health disorders (i.e, categories: anxiety disorder, bipolar disorder, clinical depression, post-traumatic stress disorder and schizophrenia) and generate a file with labels and abstracts, on which we perform the data preparation and transformation. We share this initially cleansed file as part of the program so that the rest of the code run efficiently.
+
+We use two datasets separately, one file with 100 words per partition (default) and the second with 75 words per partition. The latter is used to compare outputs and generate useful insights. 
+
+Each dataset has 1000 abstracts with the corresponding true category (i.e., label). Each category has 200 partitions of abstracts, with the corresponding number of words. 
+
+These two files are:
+
+scraped_pubmed_abstract_100.csv (default)
+scraped_pubmed_abstract_75.csv 
+
+---------------------INSTRUCTIONS TO RUN THE PROGRAM---------------------
+
+1) Install the listed libraries as prerequisites. 
+2) Run the 'abstract_extraction.ipynb' file separately, to generate the dataset. This is omitted from the main program code as it takes a few minutes to generate the dataset. Hence, we import the dataset file when running the main program.
+3) Import the 'G9_Assignment1_Text_Classification_endtoend_100.ipynb' classification file into your environment. *
+4) Import the two scraped abstract files with 100 words per partition and 75 words per partition into Goolge Collab or your Jupyter Notebook location.
+5) Run each code block with the 'scraped_pubmed_abstract_100.csv' (dafault) dataset in order and view the results. **
+6) In specified instances in the report, run the 'scraped_pubmed_abstract_75.csv' to generate comparative insights.
+
+* Alternatively, you can run the 'G9_Assignment1_Text_Classification_endtoend_75.ipynb' file for comparison.
+** Alternatively, you can view the code and results which are available in each file, without running it again.
+
+---------------------------------THE END---------------------------------
+
