@@ -1,0 +1,70 @@
+Author: 300323918                               
+Date: Jan 22, 2025
+
+----------------------------PROJECT DESCRIPTION----------------------------
+
+Welcome! This project takes an input word S = "hicccuppp" and checks against a ser of similar derivative words (words = ["hiccup", "hiicup", "hicuup", "hic", "hiccough"]) to determine if they are stretchy to be similar to S. 
+
+The goal was to identify "stretchy" words based on the following rules:
+
+The group of repeated characters in S  can only shrink to match the word’s group size if the group has fewer than 3 characters in S.
+Groups of characters in S with 3 or more characters can remain the same size or shrink to match the word’s group size.
+
+----------------------------HOW TO RUN THE CODE----------------------------
+
+Prerequisites:
+The script uses the following Python libraries:
+
+re: For processing the text patterns.
+
+1) Install the library using pip. 
+2) Run the program. I recommend using Jupyter Notebook or Google Collab.
+3) As the output, you should see the response as 1, because there is only one word which is stretchy (i.e., "hiccup").
+
+--------------------THINKING/ DESIGNING PROCESS OF THE CODE--------------------
+
+1) First, I drafted a sequence of logical steps that should be followed to write the program:
+    a) Come up with an example which has words including 'c' as per instructions and define S and words.
+    b) Validate length of 'S' and 'words' under the given constraints in the assignment.
+    c) Identify a pattern in the characters in the words stored in 'S' and 'words'.
+    d) Compare and match character groups given in 'S' and 'word'.
+    e) Identify if the words are stretchy based on similar character patterns. 
+    ** Stretchy is interpreted here as: if any word in 'words' list has a pattern of characters that can be extended to form the word stored in 'S', then that word is stretchy. 
+    f) Print the output as the number of words which are stretchy.
+     
+(These steps were modified as the code was developed in an iterative manner). 
+
+-------------------------DEVELOPING PROCESS OF THE CODE-------------------------
+
+I developed the code incrementally, for each step. Thereafter I combined the code to work together:
+
+    a) Defined and refined several texts for 'S' and 'word' which has the letter 'c' and is likely stretchy.
+    b) Developed a function 'group_characters' which access the text pattern in 'S' and 'words' to be checked as input parameters and returns the groups of characters. Used the re.findall regular expression to identify groups of similar characters and their lengths.
+    c) Developed a function 'check-stretchy' to compare and check if the character groups or text patterns returned in the above function are similar between 'S' and each occurrence of 'word'.
+    Here, based on the stretchy condition, and the code block checks words against those conditions.
+    d) Developed a function 'stretchy_words_count' to count and return the number of words that are stretchy in 'word' list relative to the base string 'S'.
+    e) Extended function 'stretchy_words_count' to validate, the length constraints of input strings, input strings are lowercase and that invalid inputs raise exceptions.
+
+-------------------------TESTING PROCESS OF THE CODE-------------------------
+
+1) First, I performed unit tests for each function individually to check for the output, such as patterns given from group_characters function etc. I provided different input examples to check if the output was as intended.
+
+2) Then I combined the functions incrementally, and performed integration testing for the end-to-end process, as follows:
+
+Tested the script with various scenarios (below and other):
+Base string S = "hicccuppp".
+Words list: ["hiccup", "hiicup", "hicuup", "hic", "hiccough"].
+Expected Output: 1 (Only "hiccup" is stretchy).
+Additional tests included:
+Edge cases with empty strings, capitalization (S or words).
+Words containing characters not in S.
+Words longer or shorter than S, i.e. words with more than 100 characters.
+
+2) I repeated this process with different examples of stretchy words susbtituted for 'S' and 'words', as well.
+
+--------------------------------RESOURCES--------------------------------
+
+1) Python RegEx: https://www.w3schools.com/python/python_regex.asp
+
+----------------------------------THE END----------------------------------
+

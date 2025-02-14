@@ -1,0 +1,101 @@
+Author: 300323918                               
+Date: Jan 22, 2025
+
+----------------------------PROJECT DESCRIPTION----------------------------
+
+Welcome! This project takes three samples of Gutenberg's Digital Books in text form from the url, then cleans the text to remove all non-alphanumeric characters. Thereafter, it creates random samples of 200 partitions of the book, each containing 100 words. Then, the text partitions of a book is labelled using one letter from alphabet starting from a, b, c, ...z. The processed text is stored in a dataframe for further manipulation. The program is also in a generalized form to be able to insert any other book link (in .txt form) from Gutenberg's digital books. At the end, the program generates a .CSV file as the output which includes the labels and corresponding text chunks. 
+
+----------------------------HOW TO RUN THE CODE----------------------------
+
+Prerequisites:
+The script uses the following Python libraries:
+
+nltk: For text tokenization.
+random: To randomize partition starting points.
+pandas: For organizing and saving data into a CSV file.
+requests: For fetching text files from the web.
+re: For cleaning and processing text patterns.
+
+Download the following resources (please enable them in the code):
+    nltk.download('punkt') ## Download the 'punkt' resource
+    nltk.download('punkt_tab') ## Download the 'punkt_tab' resource
+
+1) Install the libraries using pip. Enable the resources. 
+2) Run the program. I recommend using Jupyter Notebook or Google Collab.
+By default, it processes three Gutenberg books:
+    * Pride and Prejudice - https://www.gutenberg.org/files/1342/1342-0.txt
+    * Frankenstein - https://www.gutenberg.org/files/84/84-0.txt
+    * Alice’s Adventures in Wonderland - https://www.gutenberg.org/files/11/11-0.txt
+3) As the output, you should see the Pandas data frame manipulations on the output screen, and a .csv file generated with the partitions and the labels.
+
+Generalization:
+To use other books, replace the URLs in the urls list with URLs of other Gutenberg books in text format.
+
+--------------------THINKING/ DESIGNING PROCESS OF THE CODE--------------------
+
+1) First, I drafted a set of steps that should be followed to write the program, as follows:
+    a) Find location and format of Gutenberg texts on the web and .txt files
+    b) Extract the text from 3 books (from URL of .txt file)
+    c) Clean the text and remove all punctuation marks and metadata
+    d) Split the text into words
+    e) Separate the text into 200 partitions starting with a random number as the starting index
+    f) Assign 100 words per partition 
+    g) Label each partition with letters from a, b, c to z, with each book's partitions containing one letter (so text from book 1 is labelled as a, text from book 2 is labelled as b and so on).
+    h) Generalize the code to use any book from the lot.
+    i) Save the labels and book partitions into a dataframe, and perform actions on the data.
+    j) Download the labels and corresponding partitions to a .CSV file 
+(These steps were modified as the code was developed in an iterative manner). 
+
+-------------------------DEVELOPING PROCESS OF THE CODE-------------------------
+
+I developed the program incrementally, function by function. Thereafter I combined the functions to work together. It was improved iteratively.
+
+    a) Developed the 'read_file' function to input the .txt file url of the book and retrieve the corresponding text of a Gutenberg book. I use the 'requests' library for this function. 
+   
+    b) Developed the 'clean_text' function to input the text of a book, and remove the metadata, as well as any non-alphanumeric characters. I use the 're' (i.e., RegEx) library for this function.
+    
+    c) Developed the function 'create_partitions' to access the text of a cleaned book and split it into partitions and label each partition. First, the function tokenizes the words using the 'nltk' library. Then the partitioning starts at a random word/ index in a text file, and assigns 100 words to each partition. This uses the 'random' library to generate a random index to begin with (see code) partitioning. This function outputs 200 partitions of a book each having 100 words. It repeats the process for the other 2 books. 
+    
+    d) The same function 'create_partitions' runs another loop to assign a label to each partition beginning with characters a-z. Partitions of each book will have one character as a label to be able to identify the book, uniquely.
+   
+    e) The program was modified to combine all functions together in the main script 'if __name__ == "__main__":'. This generalizes the code to any book from the Gutenberg digital books providing 3 books as urls, and they can be changed to apply to any other book in the Gutenberg library. 
+    The main script calls the functions 'read_file' and 'create_partitions' which runs 'clean_text' within. Then it stores the labels and partitions in a dictionary, which is then converted to a dataframe using Pandas.
+
+    f) Thereafter, Pandas is used to manipulate and output parts of the stored partitions, for example the shape of data (number of rows and columns), the data (first and last few rows), and a random sample of the dataframe to show other labels and partitions.
+    Finally, the program takes the pandas dataframe as the input and outputs a .csv file with all the partitions and labels.
+
+-------------------------TESTING PROCESS OF THE CODE-------------------------
+
+1) First, I performed unit tests for each function individually, as the code was being developed. For example, for 'read_file(url)' function,
+(To ensure that the function correctly downloads text files from a given URL).
+Test Cases:
+Valid URL: Tested with multiple Gutenberg text file URLs (e.g., Frankenstein, Pride and Prejudice).
+Expected: Returns the text content without errors.
+Invalid URL: Tested with non-existent or malformed URLs.
+Expected: Raises an appropriate HTTP error (requests.exceptions.HTTPError).
+Outcome: Passed all test cases.
+
+Similar tests were performed for other functions based on their input and output. 
+
+2) Then I combined the individual functions and the main script, and performed integration testing for the end-to-end process with 3 Gutenberg urls, as follows:
+
+Verified that:
+Text files were downloaded successfully from urls.
+Metadata and punctuations were cleaned, and the text was tokenized correctly.
+Partitions were generated with randomized starting points and partition size.
+The final DataFrame contained the correct labels and text partitions.
+The CSV file (gutenberg_partitions.csv) was saved correctly.
+
+3) Further, I opened the generated gutenberg_partitions.csv in a spreadsheet to check (or test) for:
+Correct label-text mapping.
+Number of partitions created per book.
+Text length consistency (100 words per partition).
+Randomization in partition starting points.
+
+--------------------------------RESOURCES--------------------------------
+
+1) NLTK Book: https://www.nltk.org/book/ch01.html
+2) Python RegEx: https://www.w3schools.com/python/python_regex.asp
+3) Gutenberg Digital Books: https://www.gutenberg.org/ 
+
+----------------------------------THE END----------------------------------
