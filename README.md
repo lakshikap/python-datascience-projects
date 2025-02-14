@@ -6,4 +6,4 @@
 5. All projects have a readme file which guides you except for the basic and advanced coding folders as they are beginners codes.
 
 # In the journey to enhance programming skills
-I have more projects in the pipeline, and I look forward to publishing them!
+I have interesting projects in the pipeline, and I look forward to publishing them!
